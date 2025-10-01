@@ -2,6 +2,7 @@ import { ArrowDown } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import profileImage from "@assets/123145151 — копия_1759353924508.jpg";
+import ProfileCard from "@/components/effects/ProfileCard";
 
 export default function HeroSection() {
   return (
@@ -137,20 +138,22 @@ export default function HeroSection() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
           >
-            <div className="relative group">
-              <motion.div 
-                className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/40 rounded-2xl blur-2xl"
-                aria-hidden="true"
-              />
-              <motion.img
-                src={profileImage}
-                alt="Кирилл Жилин"
-                className="relative rounded-2xl w-full max-w-md shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]"
-                data-testid="img-hero-profile"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              />
-            </div>
+            <ProfileCard
+              name="Кирилл Жилин"
+              title="PHP Backend-разработчик"
+              handle="kiriunchik"
+              status="Открыт для проектов"
+              contactText="Связаться"
+              avatarUrl={profileImage}
+              miniAvatarUrl={profileImage}
+              showUserInfo={true}
+              enableTilt={true}
+              enableMobileTilt={false}
+              onContactClick={() => {
+                const contactSection = document.getElementById('contact');
+                contactSection?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            />
           </motion.div>
         </div>
 
