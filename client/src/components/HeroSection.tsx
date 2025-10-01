@@ -1,6 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import profileImage from "@assets/photo_5264993902300102698_y_1759353387671.jpg";
+import { motion } from "framer-motion";
+import profileImage from "@assets/123145151 — копия_1759353924508.jpg";
 
 export default function HeroSection() {
   return (
@@ -21,13 +22,54 @@ export default function HeroSection() {
             backgroundSize: '50px 50px',
           }}
         />
+        
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(108, 92, 231, 0.3) 0%, transparent 70%)',
+            filter: 'blur(80px)',
+          }}
+          animate={{
+            x: [0, 50, 0],
+            y: [0, 30, 0],
+            scale: [1, 1.1, 1],
+          }}
+          transition={{
+            duration: 8,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+        
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 rounded-full"
+          style={{
+            background: 'radial-gradient(circle, rgba(162, 155, 254, 0.25) 0%, transparent 70%)',
+            filter: 'blur(100px)',
+          }}
+          animate={{
+            x: [0, -30, 0],
+            y: [0, 40, 0],
+            scale: [1, 1.2, 1],
+          }}
+          transition={{
+            duration: 10,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
       </div>
 
       <div className="container mx-auto px-4 relative z-10 max-w-6xl">
         <div className="grid md:grid-cols-2 gap-12 items-center">
-          <div className="space-y-8">
+          <motion.div 
+            className="space-y-8"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+          >
             <div className="space-y-4">
-              <h1 
+              <motion.h1 
                 className="font-display text-5xl md:text-6xl lg:text-7xl font-bold leading-tight"
                 style={{
                   background: 'linear-gradient(135deg, hsl(260, 80%, 65%) 0%, hsl(270, 70%, 60%) 100%)',
@@ -36,21 +78,41 @@ export default function HeroSection() {
                   backgroundClip: 'text',
                 }}
                 data-testid="text-hero-name"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
               >
                 Кирилл Жилин
-              </h1>
-              <h2 className="text-2xl md:text-3xl font-semibold text-white" data-testid="text-hero-title">
+              </motion.h1>
+              <motion.h2 
+                className="text-2xl md:text-3xl font-semibold text-white" 
+                data-testid="text-hero-title"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.3 }}
+              >
                 PHP Backend Разработчик
-              </h2>
-              <p className="text-lg text-muted-foreground" data-testid="text-hero-subtitle">
+              </motion.h2>
+              <motion.p 
+                className="text-lg text-muted-foreground" 
+                data-testid="text-hero-subtitle"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
                 Квалифицированный специалист по Bitrix Framework с опытом коммерческой разработки
-              </p>
+              </motion.p>
             </div>
 
-            <Card 
-              className="p-6 backdrop-blur-md bg-white/10 border border-primary/30"
-              data-testid="card-hero-stats"
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.8, delay: 0.5 }}
             >
+              <Card 
+                className="p-6 backdrop-blur-md bg-white/10 border border-primary/30 hover-elevate transition-all"
+                data-testid="card-hero-stats"
+              >
               <div className="grid grid-cols-3 gap-4">
                 <div className="text-center">
                   <div className="text-3xl font-bold text-primary" data-testid="text-stat-years">2+</div>
@@ -66,27 +128,53 @@ export default function HeroSection() {
                 </div>
               </div>
             </Card>
-          </div>
+            </motion.div>
+          </motion.div>
 
-          <div className="relative flex justify-center md:justify-end">
-            <div className="relative">
-              <div 
-                className="absolute -inset-4 bg-gradient-to-r from-primary/20 to-primary/40 rounded-2xl blur-2xl"
+          <motion.div 
+            className="relative flex justify-center md:justify-end"
+            initial={{ opacity: 0, x: 30 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+          >
+            <div className="relative group">
+              <motion.div 
+                className="absolute -inset-4 bg-gradient-to-r from-primary/30 to-primary/50 rounded-2xl blur-2xl opacity-75 group-hover:opacity-100"
                 aria-hidden="true"
+                animate={{
+                  scale: [1, 1.05, 1],
+                }}
+                transition={{
+                  duration: 3,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
               />
-              <img
+              <motion.img
                 src={profileImage}
                 alt="Кирилл Жилин"
-                className="relative rounded-2xl w-full max-w-md shadow-2xl"
+                className="relative rounded-2xl w-full max-w-md shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]"
                 data-testid="img-hero-profile"
+                whileHover={{ scale: 1.02 }}
+                transition={{ type: "spring", stiffness: 300 }}
               />
             </div>
-          </div>
+          </motion.div>
         </div>
 
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <motion.div 
+          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          animate={{
+            y: [0, 10, 0],
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        >
           <ArrowDown className="w-6 h-6 text-primary" data-testid="icon-scroll-indicator" />
-        </div>
+        </motion.div>
       </div>
     </section>
   );

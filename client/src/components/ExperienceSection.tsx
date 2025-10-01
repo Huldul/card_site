@@ -1,5 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import { Briefcase } from "lucide-react";
 
 interface Experience {
@@ -28,17 +31,25 @@ const experiences: Experience[] = [
 ];
 
 export default function ExperienceSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-24 px-4" id="experience">
+    <section className="py-24 px-4" id="experience" ref={ref}>
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-white" data-testid="text-experience-heading">
             Опыт работы
           </h2>
           <p className="text-lg text-muted-foreground" data-testid="text-experience-subtitle">
             2+ года разработки на крупных и средних проектах
           </p>
-        </div>
+        </motion.div>
 
         <div className="relative">
           <div 
@@ -48,15 +59,18 @@ export default function ExperienceSection() {
 
           <div className="space-y-12">
             {experiences.map((exp, index) => (
-              <div
+              <motion.div
                 key={index}
                 className={`relative grid md:grid-cols-2 gap-8 items-center ${
                   index % 2 === 0 ? '' : 'md:flex-row-reverse'
                 }`}
                 data-testid={`experience-item-${index}`}
+                initial={{ opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: index % 2 === 0 ? -50 : 50 }}
+                transition={{ duration: 0.6, delay: index * 0.2 }}
               >
                 <div className={index % 2 === 0 ? 'md:text-right' : 'md:col-start-2'}>
-                  <Card className="p-6 hover-elevate transition-all duration-300">
+                  <Card className="p-6 hover-elevate transition-all duration-300 group">
                     <div className="space-y-4">
                       <div>
                         <Badge variant="secondary" className="mb-2" data-testid={`badge-period-${index}`}>
@@ -88,27 +102,44 @@ export default function ExperienceSection() {
                   </Card>
                 </div>
 
-                <div className="absolute left-0 md:left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10">
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center ring-4 ring-background">
+                <motion.div 
+                  className="absolute left-0 md:left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10"
+                  initial={{ scale: 0 }}
+                  animate={isInView ? { scale: 1 } : { scale: 0 }}
+                  transition={{ duration: 0.4, delay: index * 0.2 + 0.3 }}
+                >
+                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center ring-4 ring-background group-hover:scale-110 transition-transform">
                     <Briefcase className="w-6 h-6 text-primary-foreground" data-testid={`icon-exp-${index}`} />
                   </div>
-                </div>
-              </div>
+                </motion.div>
+              </motion.div>
             ))}
           </div>
         </div>
 
-        <div className="mt-16 text-center">
-          <Card className="inline-block p-8 backdrop-blur-md bg-gradient-to-br from-primary/10 to-primary/5 border-primary/30">
+        <motion.div 
+          className="mt-16 text-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <Card className="inline-block p-8 backdrop-blur-md bg-gradient-to-br from-primary/10 to-primary/5 border-primary/30 hover-elevate transition-all">
             <div className="flex items-center gap-4">
-              <div className="text-6xl font-bold text-primary">2+</div>
+              <motion.div 
+                className="text-6xl font-bold text-primary"
+                initial={{ scale: 0 }}
+                animate={isInView ? { scale: 1 } : { scale: 0 }}
+                transition={{ type: "spring", stiffness: 200, delay: 0.8 }}
+              >
+                2+
+              </motion.div>
               <div className="text-left">
                 <div className="font-display text-2xl font-bold text-white">Года опыта</div>
                 <div className="text-muted-foreground">коммерческой разработки</div>
               </div>
             </div>
           </Card>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

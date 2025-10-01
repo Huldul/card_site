@@ -1,5 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef } from "react";
 import { SiPhp, SiLaravel, SiMysql, SiPostgresql, SiDocker, SiGit, SiLinux, SiRedis } from "react-icons/si";
 
 interface Skill {
@@ -22,31 +25,44 @@ const skills: Skill[] = [
 ];
 
 export default function SkillsSection() {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true, margin: "-100px" });
+
   return (
-    <section className="py-24 px-4" id="skills">
+    <section className="py-24 px-4" id="skills" ref={ref}>
       <div className="container mx-auto max-w-6xl">
-        <div className="text-center mb-16">
+        <motion.div 
+          className="text-center mb-16"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.6 }}
+        >
           <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-white" data-testid="text-skills-heading">
             Технологии и навыки
           </h2>
           <p className="text-lg text-muted-foreground" data-testid="text-skills-subtitle">
             Глубокая экспертиза в современных технологиях backend-разработки
           </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.map((skill, index) => {
             const Icon = skill.icon;
             return (
-              <Card
+              <motion.div
                 key={index}
-                className="p-6 hover-elevate active-elevate-2 transition-all duration-300 border-l-4"
-                style={{ borderLeftColor: 'hsl(270, 70%, 60%)' }}
-                data-testid={`card-skill-${index}`}
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
               >
+                <Card
+                  className="p-6 hover-elevate active-elevate-2 transition-all duration-300 border-l-4 group"
+                  style={{ borderLeftColor: 'hsl(270, 70%, 60%)' }}
+                  data-testid={`card-skill-${index}`}
+                >
                 <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10">
-                    <Icon className="w-6 h-6 text-primary" data-testid={`icon-skill-${index}`} />
+                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
+                    <Icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" data-testid={`icon-skill-${index}`} />
                   </div>
                   <div className="flex-1 space-y-2">
                     <div className="flex items-center justify-between">
@@ -75,12 +91,18 @@ export default function SkillsSection() {
                   </div>
                 </div>
               </Card>
+              </motion.div>
             );
           })}
         </div>
 
-        <div className="mt-12 text-center">
-          <Card className="inline-block p-6 backdrop-blur-md bg-card/50">
+        <motion.div 
+          className="mt-12 text-center"
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+          transition={{ duration: 0.6, delay: 0.8 }}
+        >
+          <Card className="inline-block p-6 backdrop-blur-md bg-card/50 hover-elevate transition-all">
             <h3 className="font-display text-2xl font-bold mb-2 text-white">
               1С-Битрикс
             </h3>
@@ -96,7 +118,7 @@ export default function SkillsSection() {
               </Badge>
             </div>
           </Card>
-        </div>
+        </motion.div>
       </div>
     </section>
   );
