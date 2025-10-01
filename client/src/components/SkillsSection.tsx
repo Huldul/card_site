@@ -4,9 +4,10 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { SiPhp, SiLaravel, SiMysql, SiPostgresql, SiDocker, SiGit, SiJavascript } from "react-icons/si";
-import { Network, Database } from "lucide-react";
+import { Network, Database, Code } from "lucide-react";
 import OneCIcon from "@/components/icons/OneCIcon";
 import SpotlightCard from "@/components/effects/SpotlightCard";
+import GlassIcons from "@/components/effects/GlassIcons";
 
 interface Skill {
   name: string;
@@ -48,6 +49,26 @@ export default function SkillsSection() {
           </p>
         </motion.div>
 
+        <motion.div 
+          className="mb-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+        >
+          <GlassIcons 
+            items={[
+              { icon: <SiPhp />, color: 'violet', label: 'PHP' },
+              { icon: <OneCIcon />, color: 'purple', label: '1С-Битрикс' },
+              { icon: <SiLaravel />, color: 'red', label: 'Laravel' },
+              { icon: <Database />, color: 'blue', label: 'SQL' },
+              { icon: <Network />, color: 'indigo', label: 'REST API' },
+              { icon: <SiDocker />, color: 'blue', label: 'Docker' },
+              { icon: <SiGit />, color: 'orange', label: 'Git' },
+              { icon: <Code />, color: 'green', label: 'JavaScript' },
+            ]}
+          />
+        </motion.div>
+
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {skills.map((skill, index) => {
             const Icon = skill.icon;
@@ -56,7 +77,7 @@ export default function SkillsSection() {
                 key={index}
                 initial={{ opacity: 0, y: 30 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
               >
                 <SpotlightCard 
                   className="group h-full"
