@@ -1,6 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
+import GradualBlur from "./effects/GradualBlur";
 import profileImage from "@assets/123145151 — копия_1759353924508.jpg";
 
 export default function HeroSection() {
@@ -139,25 +140,45 @@ export default function HeroSection() {
           >
             <div className="relative group">
               <motion.div 
-                className="absolute -inset-4 bg-gradient-to-r from-primary/30 to-primary/50 rounded-2xl blur-2xl opacity-75 group-hover:opacity-100"
+                className="absolute -inset-8 bg-gradient-to-br from-primary/40 via-primary/30 to-purple-500/40 rounded-3xl blur-3xl opacity-75 group-hover:opacity-100"
                 aria-hidden="true"
                 animate={{
-                  scale: [1, 1.05, 1],
+                  scale: [1, 1.1, 1],
+                  rotate: [0, 5, 0],
                 }}
                 transition={{
-                  duration: 3,
+                  duration: 4,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
               />
-              <motion.img
-                src={profileImage}
-                alt="Кирилл Жилин"
-                className="relative rounded-2xl w-full max-w-md shadow-2xl transition-transform duration-300 group-hover:scale-[1.02]"
-                data-testid="img-hero-profile"
-                whileHover={{ scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-              />
+              
+              <div className="relative">
+                <motion.img
+                  src={profileImage}
+                  alt="Кирилл Жилин"
+                  className="relative rounded-3xl w-full max-w-md shadow-2xl transition-all duration-500 group-hover:shadow-primary/50"
+                  data-testid="img-hero-profile"
+                  style={{
+                    boxShadow: '0 25px 50px -12px rgba(108, 92, 231, 0.25)',
+                  }}
+                  whileHover={{ scale: 1.02 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                />
+                
+                <GradualBlur 
+                  position="bottom" 
+                  strength={4} 
+                  divCount={6}
+                />
+                
+                <div 
+                  className="absolute inset-0 rounded-3xl"
+                  style={{
+                    background: 'linear-gradient(to bottom, transparent 60%, rgba(108, 92, 231, 0.1) 100%)',
+                  }}
+                />
+              </div>
             </div>
           </motion.div>
         </div>
