@@ -4,27 +4,27 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { SiPhp, SiLaravel, SiMysql, SiPostgresql, SiDocker, SiGit, SiJavascript } from "react-icons/si";
-import { Network, Database, Code, Server } from "lucide-react";
+import { Network, Database } from "lucide-react";
 import OneCIcon from "@/components/icons/OneCIcon";
-import GlassIcons from "@/components/effects/GlassIcons";
+import SpotlightCard from "@/components/effects/SpotlightCard";
 
 interface Skill {
   name: string;
   icon: React.ComponentType<{ className?: string }>;
-  level: number;
   category: string;
+  description: string;
 }
 
 const skills: Skill[] = [
-  { name: "PHP", icon: SiPhp, level: 90, category: "Языки" },
-  { name: "1С-Битрикс", icon: OneCIcon, level: 95, category: "Фреймворки" },
-  { name: "Laravel", icon: SiLaravel, level: 85, category: "Фреймворки" },
-  { name: "MySQL", icon: SiMysql, level: 85, category: "Базы данных" },
-  { name: "PostgreSQL", icon: SiPostgresql, level: 80, category: "Базы данных" },
-  { name: "REST API", icon: Network, level: 90, category: "Интеграции" },
-  { name: "Docker", icon: SiDocker, level: 75, category: "DevOps" },
-  { name: "Git", icon: SiGit, level: 85, category: "Инструменты" },
-  { name: "JavaScript", icon: SiJavascript, level: 75, category: "Языки" },
+  { name: "PHP", icon: SiPhp, category: "Языки", description: "Глубокие знания PHP 7.4+, ООП, паттерны проектирования" },
+  { name: "1С-Битрикс", icon: OneCIcon, category: "Фреймворки", description: "Сертифицированный разработчик, опыт в крупных проектах" },
+  { name: "Laravel", icon: SiLaravel, category: "Фреймворки", description: "Современный фреймворк для быстрой разработки" },
+  { name: "MySQL", icon: SiMysql, category: "Базы данных", description: "Оптимизация запросов, проектирование структуры БД" },
+  { name: "PostgreSQL", icon: SiPostgresql, category: "Базы данных", description: "Продвинутые возможности реляционных СУБД" },
+  { name: "REST API", icon: Network, category: "Интеграции", description: "Проектирование и разработка RESTful API" },
+  { name: "Docker", icon: SiDocker, category: "DevOps", description: "Контейнеризация приложений, Docker Compose" },
+  { name: "Git", icon: SiGit, category: "Инструменты", description: "Контроль версий, GitFlow, совместная разработка" },
+  { name: "JavaScript", icon: SiJavascript, category: "Языки", description: "ES6+, современный JavaScript для фронтенда" },
 ];
 
 export default function SkillsSection() {
@@ -58,66 +58,34 @@ export default function SkillsSection() {
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
               >
-                <Card
-                  className="p-6 hover-elevate active-elevate-2 transition-all duration-300 border-l-4 group"
-                  style={{ borderLeftColor: 'hsl(270, 70%, 60%)' }}
+                <SpotlightCard 
+                  className="group h-full"
+                  spotlightColor="rgba(108, 92, 231, 0.25)"
                   data-testid={`card-skill-${index}`}
                 >
-                <div className="flex items-start gap-4">
-                  <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors">
-                    <Icon className="w-6 h-6 text-primary group-hover:scale-110 transition-transform" data-testid={`icon-skill-${index}`} />
-                  </div>
-                  <div className="flex-1 space-y-2">
-                    <div className="flex items-center justify-between">
-                      <h3 className="font-semibold text-white" data-testid={`text-skill-name-${index}`}>
-                        {skill.name}
-                      </h3>
-                      <Badge variant="secondary" className="text-xs" data-testid={`badge-skill-category-${index}`}>
-                        {skill.category}
-                      </Badge>
-                    </div>
-                    <div className="space-y-1">
-                      <div className="flex items-center justify-between text-sm">
-                        <span className="text-muted-foreground">Уровень владения</span>
-                        <span className="text-primary font-medium" data-testid={`text-skill-level-${index}`}>
-                          {skill.level}%
-                        </span>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-4">
+                      <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex-shrink-0">
+                        <Icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" data-testid={`icon-skill-${index}`} />
                       </div>
-                      <div className="h-2 bg-secondary rounded-full overflow-hidden">
-                        <div
-                          className="h-full bg-gradient-to-r from-primary to-primary/80 rounded-full transition-all duration-500"
-                          style={{ width: `${skill.level}%` }}
-                          data-testid={`progress-skill-${index}`}
-                        />
+                      <div className="flex-1 min-w-0">
+                        <h3 className="font-display text-xl font-bold text-white mb-1" data-testid={`text-skill-name-${index}`}>
+                          {skill.name}
+                        </h3>
+                        <Badge variant="secondary" className="text-xs" data-testid={`badge-skill-category-${index}`}>
+                          {skill.category}
+                        </Badge>
                       </div>
                     </div>
+                    <p className="text-muted-foreground text-sm leading-relaxed" data-testid={`text-skill-desc-${index}`}>
+                      {skill.description}
+                    </p>
                   </div>
-                </div>
-              </Card>
+                </SpotlightCard>
               </motion.div>
             );
           })}
         </div>
-
-        <motion.div 
-          className="mt-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.9 }}
-        >
-          <GlassIcons 
-            items={[
-              { icon: <SiPhp />, color: 'violet', label: 'PHP' },
-              { icon: <OneCIcon />, color: 'purple', label: '1С-Битрикс' },
-              { icon: <SiLaravel />, color: 'red', label: 'Laravel' },
-              { icon: <Database />, color: 'blue', label: 'SQL' },
-              { icon: <Network />, color: 'indigo', label: 'REST API' },
-              { icon: <SiDocker />, color: 'blue', label: 'Docker' },
-              { icon: <SiGit />, color: 'orange', label: 'Git' },
-              { icon: <Code />, color: 'green', label: 'JavaScript' },
-            ]}
-          />
-        </motion.div>
 
         <motion.div 
           className="mt-12 text-center"
