@@ -36,8 +36,14 @@ jobs:
         # Build only the frontend with GitHub Pages base path
         GITHUB_PAGES=true npm run build
         
-        # Ensure we have the correct structure for GitHub Pages
-        ls -la dist/public/
+        # Move files to root for GitHub Pages
+        cp -r dist/public/* ./
+        
+        # Create .nojekyll file to bypass Jekyll processing
+        touch .nojekyll
+        
+        # List files to verify structure
+        ls -la
         
     - name: Setup Pages
       uses: actions/configure-pages@v4
@@ -45,7 +51,7 @@ jobs:
     - name: Upload artifact
       uses: actions/upload-pages-artifact@v3
       with:
-        path: './dist/public'
+        path: '.'
 
   deploy:
     environment:
