@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Briefcase } from "lucide-react";
+import SpotlightCard from "@/components/effects/SpotlightCard";
 
 interface Experience {
   period: string;
@@ -70,7 +71,10 @@ export default function ExperienceSection() {
                 transition={{ duration: 0.6, delay: index * 0.2 }}
               >
                 <div className={index % 2 === 0 ? 'md:text-right' : 'md:col-start-2'}>
-                  <Card className="p-6 hover-elevate transition-all duration-300 group">
+                  <SpotlightCard 
+                    className="group"
+                    spotlightColor="rgba(108, 92, 231, 0.25)"
+                  >
                     <div className="space-y-4">
                       <div>
                         <Badge variant="secondary" className="mb-2" data-testid={`badge-period-${index}`}>
@@ -99,7 +103,7 @@ export default function ExperienceSection() {
                         ))}
                       </div>
                     </div>
-                  </Card>
+                  </SpotlightCard>
                 </div>
 
                 <motion.div 
