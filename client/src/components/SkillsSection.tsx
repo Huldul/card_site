@@ -29,7 +29,7 @@ export default function SkillsSection() {
   const isInView = useInView(ref, { once: true, margin: "-100px" });
 
   return (
-    <section className="py-24 px-4" id="skills" ref={ref}>
+    <section className="py-24 px-4 relative z-10" id="skills" ref={ref}>
       <div className="container mx-auto max-w-6xl">
         <motion.div 
           className="text-center mb-16"
