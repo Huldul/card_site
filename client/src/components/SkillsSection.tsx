@@ -2,30 +2,31 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
-import { useRef } from "react";
+import { useRef, ReactNode } from "react";
 import { SiPhp, SiLaravel, SiMysql, SiPostgresql, SiDocker, SiGit, SiJavascript } from "react-icons/si";
-import { Network, Database, Code } from "lucide-react";
+import { Network, Database } from "lucide-react";
 import OneCIcon from "@/components/icons/OneCIcon";
 import SpotlightCard from "@/components/effects/SpotlightCard";
-import GlassIcons from "@/components/effects/GlassIcons";
+import GlassIcon from "@/components/effects/GlassIcon";
 
 interface Skill {
   name: string;
-  icon: React.ComponentType<{ className?: string }>;
+  icon: ReactNode;
+  iconColor: string;
   category: string;
   description: string;
 }
 
 const skills: Skill[] = [
-  { name: "PHP", icon: SiPhp, category: "Языки", description: "Глубокие знания PHP 7.4+, ООП, паттерны проектирования" },
-  { name: "1С-Битрикс", icon: OneCIcon, category: "Фреймворки", description: "Сертифицированный разработчик, опыт в крупных проектах" },
-  { name: "Laravel", icon: SiLaravel, category: "Фреймворки", description: "Современный фреймворк для быстрой разработки" },
-  { name: "MySQL", icon: SiMysql, category: "Базы данных", description: "Оптимизация запросов, проектирование структуры БД" },
-  { name: "PostgreSQL", icon: SiPostgresql, category: "Базы данных", description: "Продвинутые возможности реляционных СУБД" },
-  { name: "REST API", icon: Network, category: "Интеграции", description: "Проектирование и разработка RESTful API" },
-  { name: "Docker", icon: SiDocker, category: "DevOps", description: "Контейнеризация приложений, Docker Compose" },
-  { name: "Git", icon: SiGit, category: "Инструменты", description: "Контроль версий, GitFlow, совместная разработка" },
-  { name: "JavaScript", icon: SiJavascript, category: "Языки", description: "ES6+, современный JavaScript для фронтенда" },
+  { name: "PHP", icon: <SiPhp />, iconColor: "violet", category: "Языки", description: "Глубокие знания PHP 7.4+, ООП, паттерны проектирования" },
+  { name: "1С-Битрикс", icon: <OneCIcon />, iconColor: "purple", category: "Фреймворки", description: "Сертифицированный разработчик, опыт в крупных проектах" },
+  { name: "Laravel", icon: <SiLaravel />, iconColor: "red", category: "Фреймворки", description: "Современный фреймворк для быстрой разработки" },
+  { name: "MySQL", icon: <Database />, iconColor: "blue", category: "Базы данных", description: "Оптимизация запросов, проектирование структуры БД" },
+  { name: "PostgreSQL", icon: <SiPostgresql />, iconColor: "blue", category: "Базы данных", description: "Продвинутые возможности реляционных СУБД" },
+  { name: "REST API", icon: <Network />, iconColor: "indigo", category: "Интеграции", description: "Проектирование и разработка RESTful API" },
+  { name: "Docker", icon: <SiDocker />, iconColor: "blue", category: "DevOps", description: "Контейнеризация приложений, Docker Compose" },
+  { name: "Git", icon: <SiGit />, iconColor: "orange", category: "Инструменты", description: "Контроль версий, GitFlow, совместная разработка" },
+  { name: "JavaScript", icon: <SiJavascript />, iconColor: "green", category: "Языки", description: "ES6+, современный JavaScript для фронтенда" },
 ];
 
 export default function SkillsSection() {
@@ -49,63 +50,43 @@ export default function SkillsSection() {
           </p>
         </motion.div>
 
-        <motion.div 
-          className="mb-16"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          <GlassIcons 
-            items={[
-              { icon: <SiPhp />, color: 'violet', label: 'PHP' },
-              { icon: <OneCIcon />, color: 'purple', label: '1С-Битрикс' },
-              { icon: <SiLaravel />, color: 'red', label: 'Laravel' },
-              { icon: <Database />, color: 'blue', label: 'SQL' },
-              { icon: <Network />, color: 'indigo', label: 'REST API' },
-              { icon: <SiDocker />, color: 'blue', label: 'Docker' },
-              { icon: <SiGit />, color: 'orange', label: 'Git' },
-              { icon: <Code />, color: 'green', label: 'JavaScript' },
-            ]}
-          />
-        </motion.div>
-
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {skills.map((skill, index) => {
-            const Icon = skill.icon;
-            return (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 30 }}
-                animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-                transition={{ duration: 0.5, delay: index * 0.1 + 0.4 }}
+          {skills.map((skill, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+            >
+              <SpotlightCard 
+                className="group h-full"
+                spotlightColor="rgba(108, 92, 231, 0.25)"
+                data-testid={`card-skill-${index}`}
               >
-                <SpotlightCard 
-                  className="group h-full"
-                  spotlightColor="rgba(108, 92, 231, 0.25)"
-                  data-testid={`card-skill-${index}`}
-                >
-                  <div className="space-y-4">
-                    <div className="flex items-start gap-4">
-                      <div className="p-3 rounded-lg bg-primary/10 group-hover:bg-primary/20 transition-colors flex-shrink-0">
-                        <Icon className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" data-testid={`icon-skill-${index}`} />
-                      </div>
-                      <div className="flex-1 min-w-0">
-                        <h3 className="font-display text-xl font-bold text-white mb-1" data-testid={`text-skill-name-${index}`}>
-                          {skill.name}
-                        </h3>
-                        <Badge variant="secondary" className="text-xs" data-testid={`badge-skill-category-${index}`}>
-                          {skill.category}
-                        </Badge>
-                      </div>
+                <div className="space-y-4">
+                  <div className="flex flex-col items-center gap-4 text-center">
+                    <GlassIcon 
+                      icon={skill.icon}
+                      color={skill.iconColor}
+                      label={skill.name}
+                      className="transform scale-90"
+                    />
+                    <div className="flex-1 w-full">
+                      <h3 className="font-display text-xl font-bold text-white mb-2" data-testid={`text-skill-name-${index}`}>
+                        {skill.name}
+                      </h3>
+                      <Badge variant="secondary" className="text-xs mb-3" data-testid={`badge-skill-category-${index}`}>
+                        {skill.category}
+                      </Badge>
+                      <p className="text-muted-foreground text-sm leading-relaxed" data-testid={`text-skill-desc-${index}`}>
+                        {skill.description}
+                      </p>
                     </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed" data-testid={`text-skill-desc-${index}`}>
-                      {skill.description}
-                    </p>
                   </div>
-                </SpotlightCard>
-              </motion.div>
-            );
-          })}
+                </div>
+              </SpotlightCard>
+            </motion.div>
+          ))}
         </div>
 
         <motion.div 
