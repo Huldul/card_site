@@ -1,0 +1,122 @@
+import { Card } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Briefcase } from "lucide-react";
+
+interface Experience {
+  period: string;
+  title: string;
+  company: string;
+  description: string;
+  technologies: string[];
+}
+
+const experiences: Experience[] = [
+  {
+    period: "2022 - Настоящее время",
+    title: "Middle PHP Backend Developer",
+    company: "Крупная IT-компания",
+    description: "Разработка и поддержка высоконагруженных веб-приложений на базе Laravel и Bitrix Framework. Оптимизация производительности, проектирование архитектуры, интеграция внешних API.",
+    technologies: ["Laravel", "Bitrix", "MySQL", "Redis", "Docker"],
+  },
+  {
+    period: "2021 - 2022",
+    title: "Junior/Middle PHP Developer",
+    company: "Веб-студия",
+    description: "Разработка корпоративных порталов и интернет-магазинов на Bitrix Framework. Создание кастомных модулей, интеграция с 1С и платёжными системами.",
+    technologies: ["Bitrix Framework", "PHP", "MySQL", "JavaScript"],
+  },
+  {
+    period: "2020 - 2021",
+    title: "Junior PHP Developer",
+    company: "Стартап",
+    description: "Участие в разработке MVP проектов на Laravel. Создание REST API, работа с базами данных, написание тестов, развёртывание приложений.",
+    technologies: ["Laravel", "PHP", "PostgreSQL", "Git"],
+  },
+];
+
+export default function ExperienceSection() {
+  return (
+    <section className="py-24 px-4" id="experience">
+      <div className="container mx-auto max-w-6xl">
+        <div className="text-center mb-16">
+          <h2 className="font-display text-4xl md:text-5xl font-bold mb-4 text-white" data-testid="text-experience-heading">
+            Опыт работы
+          </h2>
+          <p className="text-lg text-muted-foreground" data-testid="text-experience-subtitle">
+            3+ года разработки на крупных и средних проектах
+          </p>
+        </div>
+
+        <div className="relative">
+          <div 
+            className="absolute left-0 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary/50 via-primary to-primary/50"
+            aria-hidden="true"
+          />
+
+          <div className="space-y-12">
+            {experiences.map((exp, index) => (
+              <div
+                key={index}
+                className={`relative grid md:grid-cols-2 gap-8 items-center ${
+                  index % 2 === 0 ? '' : 'md:flex-row-reverse'
+                }`}
+                data-testid={`experience-item-${index}`}
+              >
+                <div className={index % 2 === 0 ? 'md:text-right' : 'md:col-start-2'}>
+                  <Card className="p-6 hover-elevate transition-all duration-300">
+                    <div className="space-y-4">
+                      <div>
+                        <Badge variant="secondary" className="mb-2" data-testid={`badge-period-${index}`}>
+                          {exp.period}
+                        </Badge>
+                        <h3 className="font-display text-2xl font-bold text-white mb-1" data-testid={`text-exp-title-${index}`}>
+                          {exp.title}
+                        </h3>
+                        <p className="text-primary font-medium" data-testid={`text-exp-company-${index}`}>
+                          {exp.company}
+                        </p>
+                      </div>
+                      <p className="text-muted-foreground leading-relaxed" data-testid={`text-exp-desc-${index}`}>
+                        {exp.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.technologies.map((tech, techIndex) => (
+                          <Badge
+                            key={techIndex}
+                            variant="outline"
+                            className="text-xs"
+                            data-testid={`badge-tech-${index}-${techIndex}`}
+                          >
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
+                    </div>
+                  </Card>
+                </div>
+
+                <div className="absolute left-0 md:left-1/2 top-1/2 -translate-y-1/2 -translate-x-1/2 z-10">
+                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center ring-4 ring-background">
+                    <Briefcase className="w-6 h-6 text-primary-foreground" data-testid={`icon-exp-${index}`} />
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="mt-16 text-center">
+          <Card className="inline-block p-8 backdrop-blur-md bg-gradient-to-br from-primary/10 to-primary/5 border-primary/30">
+            <div className="flex items-center gap-4">
+              <div className="text-6xl font-bold text-primary">3+</div>
+              <div className="text-left">
+                <div className="font-display text-2xl font-bold text-white">Года опыта</div>
+                <div className="text-muted-foreground">на крупных проектах</div>
+              </div>
+            </div>
+          </Card>
+        </div>
+      </div>
+    </section>
+  );
+}
