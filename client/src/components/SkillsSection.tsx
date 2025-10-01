@@ -63,25 +63,25 @@ export default function SkillsSection() {
                 spotlightColor="rgba(108, 92, 231, 0.25)"
                 data-testid={`card-skill-${index}`}
               >
-                <div className="space-y-4">
-                  <div className="flex flex-col items-center gap-4 text-center">
+                <div className="flex items-start gap-4">
+                  <div className="flex-shrink-0">
                     <GlassIcon 
                       icon={skill.icon}
                       color={skill.iconColor}
                       label={skill.name}
-                      className="transform scale-90"
+                      className="transform scale-75"
                     />
-                    <div className="flex-1 w-full">
-                      <h3 className="font-display text-xl font-bold text-white mb-2" data-testid={`text-skill-name-${index}`}>
-                        {skill.name}
-                      </h3>
-                      <Badge variant="secondary" className="text-xs mb-3" data-testid={`badge-skill-category-${index}`}>
-                        {skill.category}
-                      </Badge>
-                      <p className="text-muted-foreground text-sm leading-relaxed" data-testid={`text-skill-desc-${index}`}>
-                        {skill.description}
-                      </p>
-                    </div>
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <h3 className="font-display text-xl font-bold text-white mb-1" data-testid={`text-skill-name-${index}`}>
+                      {skill.name}
+                    </h3>
+                    <Badge variant="secondary" className="text-xs mb-3" data-testid={`badge-skill-category-${index}`}>
+                      {skill.category}
+                    </Badge>
+                    <p className="text-muted-foreground text-sm leading-relaxed" data-testid={`text-skill-desc-${index}`}>
+                      {skill.description}
+                    </p>
                   </div>
                 </div>
               </SpotlightCard>
