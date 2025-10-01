@@ -42,5 +42,8 @@ jobs:
         # Create .nojekyll file to bypass Jekyll processing
         touch .nojekyll
         
+        # Copy 404.html for SPA routing
+        cp 404.html ./
+        
         # List files to verify structure
         ls -la
