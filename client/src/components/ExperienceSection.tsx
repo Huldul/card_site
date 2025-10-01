@@ -48,7 +48,7 @@ export default function ExperienceSection() {
             Опыт работы
           </h2>
           <p className="text-lg text-muted-foreground" data-testid="text-experience-subtitle">
-            2+ года разработки на крупных и средних проектах
+            3+ года разработки на крупных и средних проектах
           </p>
         </motion.div>
 
@@ -135,7 +135,7 @@ export default function ExperienceSection() {
                 animate={isInView ? { scale: 1 } : { scale: 0 }}
                 transition={{ type: "spring", stiffness: 200, delay: 0.8 }}
               >
-                2+
+                3+
               </motion.div>
               <div className="text-left">
                 <div className="font-display text-2xl font-bold text-white">Года опыта</div>
