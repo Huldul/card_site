@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { SiPhp, SiLaravel, SiMysql, SiPostgresql, SiDocker, SiGit, SiJavascript } from "react-icons/si";
-import { Network } from "lucide-react";
+import { Network, Server } from "lucide-react";
 
 interface Skill {
   name: string;
@@ -15,7 +15,7 @@ interface Skill {
 
 const skills: Skill[] = [
   { name: "PHP", icon: SiPhp, level: 90, category: "Языки" },
-  { name: "1С-Битрикс", icon: SiPhp, level: 95, category: "Фреймворки" },
+  { name: "1С-Битрикс", icon: Server, level: 95, category: "Фреймворки" },
   { name: "Laravel", icon: SiLaravel, level: 85, category: "Фреймворки" },
   { name: "MySQL", icon: SiMysql, level: 85, category: "Базы данных" },
   { name: "PostgreSQL", icon: SiPostgresql, level: 80, category: "Базы данных" },
