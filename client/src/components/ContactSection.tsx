@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { Phone, Send, FileText, Mail } from "lucide-react";
+import { SiGithub } from "react-icons/si";
 
 export default function ContactSection() {
   const ref = useRef(null);
@@ -29,6 +30,11 @@ export default function ContactSection() {
     console.log("Resume click triggered");
   };
 
+  const handleGitHubClick = () => {
+    window.open("https://github.com/Huldul", "_blank");
+    console.log("GitHub click triggered");
+  };
+
   return (
     <section className="py-24 px-4 relative z-10" id="contact" ref={ref}>
       <div className="container mx-auto max-w-4xl">
@@ -46,7 +52,7 @@ export default function ContactSection() {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -117,6 +123,27 @@ export default function ContactSection() {
           >
             <Card className="p-6 text-center hover-elevate active-elevate-2 transition-all group">
               <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4 group-hover:bg-primary/20 transition-colors">
+                <SiGithub className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" data-testid="icon-contact-github" />
+              </div>
+              <h3 className="font-semibold text-white mb-2">GitHub</h3>
+              <Button
+                variant="ghost"
+                className="text-muted-foreground hover:text-primary p-0 h-auto text-sm"
+                onClick={handleGitHubClick}
+                data-testid="button-github"
+              >
+                Huldul
+              </Button>
+            </Card>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+            transition={{ duration: 0.5, delay: 0.5 }}
+          >
+            <Card className="p-6 text-center hover-elevate active-elevate-2 transition-all group">
+              <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4 group-hover:bg-primary/20 transition-colors">
                 <FileText className="w-8 h-8 text-primary group-hover:scale-110 transition-transform" data-testid="icon-contact-resume" />
               </div>
               <h3 className="font-semibold text-white mb-2">Резюме</h3>
@@ -136,7 +163,7 @@ export default function ContactSection() {
           className="mt-12 text-center"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.6, delay: 0.5 }}
+          transition={{ duration: 0.6, delay: 0.6 }}
         >
           <Card className="p-8 backdrop-blur-md bg-primary/5 border-primary/30 hover-elevate transition-all">
             <div className="flex flex-col md:flex-row gap-4 justify-center items-center">

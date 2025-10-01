@@ -23,6 +23,17 @@ export default function Footer() {
               size="icon"
               variant="ghost"
               onClick={() => {
+                window.open("https://github.com/Huldul", "_blank");
+                console.log("Footer GitHub clicked");
+              }}
+              data-testid="button-footer-github"
+            >
+              <SiGithub className="h-5 w-5" />
+            </Button>
+            <Button
+              size="icon"
+              variant="ghost"
+              onClick={() => {
                 window.open("https://t.me/huldul", "_blank");
                 console.log("Footer Telegram clicked");
               }}
