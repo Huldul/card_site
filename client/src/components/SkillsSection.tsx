@@ -4,8 +4,9 @@ import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { SiPhp, SiLaravel, SiMysql, SiPostgresql, SiDocker, SiGit, SiJavascript } from "react-icons/si";
-import { Network } from "lucide-react";
+import { Network, Database, Code, Server } from "lucide-react";
 import OneCIcon from "@/components/icons/OneCIcon";
+import GlassIcons from "@/components/effects/GlassIcons";
 
 interface Skill {
   name: string;
@@ -99,10 +100,30 @@ export default function SkillsSection() {
         </div>
 
         <motion.div 
+          className="mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ duration: 0.6, delay: 0.9 }}
+        >
+          <GlassIcons 
+            items={[
+              { icon: <SiPhp />, color: 'violet', label: 'PHP' },
+              { icon: <OneCIcon />, color: 'purple', label: '1С-Битрикс' },
+              { icon: <SiLaravel />, color: 'red', label: 'Laravel' },
+              { icon: <Database />, color: 'blue', label: 'SQL' },
+              { icon: <Network />, color: 'indigo', label: 'REST API' },
+              { icon: <SiDocker />, color: 'blue', label: 'Docker' },
+              { icon: <SiGit />, color: 'orange', label: 'Git' },
+              { icon: <Code />, color: 'green', label: 'JavaScript' },
+            ]}
+          />
+        </motion.div>
+
+        <motion.div 
           className="mt-12 text-center"
           initial={{ opacity: 0, scale: 0.9 }}
           animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-          transition={{ duration: 0.6, delay: 0.8 }}
+          transition={{ duration: 0.6, delay: 1.0 }}
         >
           <Card className="inline-block p-6 backdrop-blur-md bg-card/50 hover-elevate transition-all">
             <h3 className="font-display text-2xl font-bold mb-2 text-white">
