@@ -1,11 +1,16 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Phone, Send, FileText } from "lucide-react";
+import { Phone, Send, FileText, Mail } from "lucide-react";
 
 export default function ContactSection() {
   const handlePhoneClick = () => {
     window.location.href = "tel:+77472506895";
     console.log("Phone click triggered");
+  };
+
+  const handleEmailClick = () => {
+    window.location.href = "mailto:kiriunchik@gmail.com";
+    console.log("Email click triggered");
   };
 
   const handleTelegramClick = () => {
@@ -30,7 +35,7 @@ export default function ContactSection() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           <Card className="p-6 text-center hover-elevate active-elevate-2 transition-all">
             <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
               <Phone className="w-8 h-8 text-primary" data-testid="icon-contact-phone" />
@@ -38,11 +43,26 @@ export default function ContactSection() {
             <h3 className="font-semibold text-white mb-2">Телефон</h3>
             <Button
               variant="ghost"
-              className="text-muted-foreground hover:text-primary p-0 h-auto"
+              className="text-muted-foreground hover:text-primary p-0 h-auto text-sm"
               onClick={handlePhoneClick}
               data-testid="button-phone"
             >
               +7 747 250 68 95
+            </Button>
+          </Card>
+
+          <Card className="p-6 text-center hover-elevate active-elevate-2 transition-all">
+            <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary/10 mb-4">
+              <Mail className="w-8 h-8 text-primary" data-testid="icon-contact-email" />
+            </div>
+            <h3 className="font-semibold text-white mb-2">Email</h3>
+            <Button
+              variant="ghost"
+              className="text-muted-foreground hover:text-primary p-0 h-auto text-sm"
+              onClick={handleEmailClick}
+              data-testid="button-email"
+            >
+              kiriunchik@gmail.com
             </Button>
           </Card>
 

@@ -12,25 +12,18 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    period: "2022 - Настоящее время",
-    title: "Middle PHP Backend Developer",
-    company: "Крупная IT-компания",
-    description: "Разработка и поддержка высоконагруженных веб-приложений на базе Laravel и Bitrix Framework. Оптимизация производительности, проектирование архитектуры, интеграция внешних API.",
-    technologies: ["Laravel", "Bitrix", "MySQL", "Redis", "Docker"],
+    period: "Март 2025 - Настоящее время",
+    title: "PHP-разработчик",
+    company: "Веб-студия ONELAB",
+    description: "Разработка backend-решений, внедрение интеграций с внешними сервисами, создание административных панелей. Работа с современными технологиями и фреймворками.",
+    technologies: ["PHP", "Bitrix", "Laravel", "MySQL", "REST API"],
   },
   {
-    period: "2021 - 2022",
-    title: "Junior/Middle PHP Developer",
-    company: "Веб-студия",
-    description: "Разработка корпоративных порталов и интернет-магазинов на Bitrix Framework. Создание кастомных модулей, интеграция с 1С и платёжными системами.",
-    technologies: ["Bitrix Framework", "PHP", "MySQL", "JavaScript"],
-  },
-  {
-    period: "2020 - 2021",
-    title: "Junior PHP Developer",
-    company: "Стартап",
-    description: "Участие в разработке MVP проектов на Laravel. Создание REST API, работа с базами данных, написание тестов, развёртывание приложений.",
-    technologies: ["Laravel", "PHP", "PostgreSQL", "Git"],
+    period: "Октябрь 2023 - Март 2025",
+    title: "Backend-разработчик",
+    company: "Astana-creative",
+    description: "Занимался разработкой back-end, внедрением интеграций, написанием админ-панелей. Работа с CRM системами (amoCRM, Bitrix24). Разработка REST API.",
+    technologies: ["1С-Битрикс", "PHP", "Laravel", "MySQL", "Docker", "Git"],
   },
 ];
 
@@ -43,7 +36,7 @@ export default function ExperienceSection() {
             Опыт работы
           </h2>
           <p className="text-lg text-muted-foreground" data-testid="text-experience-subtitle">
-            3+ года разработки на крупных и средних проектах
+            2+ года разработки на крупных и средних проектах
           </p>
         </div>
 
@@ -108,10 +101,10 @@ export default function ExperienceSection() {
         <div className="mt-16 text-center">
           <Card className="inline-block p-8 backdrop-blur-md bg-gradient-to-br from-primary/10 to-primary/5 border-primary/30">
             <div className="flex items-center gap-4">
-              <div className="text-6xl font-bold text-primary">3+</div>
+              <div className="text-6xl font-bold text-primary">2+</div>
               <div className="text-left">
                 <div className="font-display text-2xl font-bold text-white">Года опыта</div>
-                <div className="text-muted-foreground">на крупных проектах</div>
+                <div className="text-muted-foreground">коммерческой разработки</div>
               </div>
             </div>
           </Card>

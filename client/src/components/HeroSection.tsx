@@ -1,6 +1,6 @@
 import { ArrowDown } from "lucide-react";
 import { Card } from "@/components/ui/card";
-import profileImage from "@assets/generated_images/Professional_developer_portrait_headshot_824aa518.png";
+import profileImage from "@assets/photo_5264993902300102698_y_1759353387671.jpg";
 
 export default function HeroSection() {
   return (
@@ -43,7 +43,7 @@ export default function HeroSection() {
                 PHP Backend Разработчик
               </h2>
               <p className="text-lg text-muted-foreground" data-testid="text-hero-subtitle">
-                Создаю надёжные и масштабируемые серверные решения для крупных проектов
+                Квалифицированный специалист по Bitrix Framework с опытом коммерческой разработки
               </p>
             </div>
 
@@ -53,16 +53,16 @@ export default function HeroSection() {
             >
               <div className="grid grid-cols-3 gap-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary" data-testid="text-stat-years">3+</div>
+                  <div className="text-3xl font-bold text-primary" data-testid="text-stat-years">2+</div>
                   <div className="text-sm text-muted-foreground">Года опыта</div>
                 </div>
                 <div className="text-center border-l border-r border-primary/20">
                   <div className="text-3xl font-bold text-primary" data-testid="text-stat-level">Middle</div>
-                  <div className="text-sm text-muted-foreground">Уровень</div>
+                  <div className="text-sm text-muted-foreground">PHP Developer</div>
                 </div>
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary" data-testid="text-stat-certs">✓</div>
-                  <div className="text-sm text-muted-foreground">Сертификаты</div>
+                  <div className="text-3xl font-bold text-primary" data-testid="text-stat-certs">1С</div>
+                  <div className="text-sm text-muted-foreground">Сертификат</div>
                 </div>
               </div>
             </Card>

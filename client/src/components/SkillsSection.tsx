@@ -11,14 +11,14 @@ interface Skill {
 
 const skills: Skill[] = [
   { name: "PHP", icon: SiPhp, level: 90, category: "Языки" },
+  { name: "1С-Битрикс", icon: SiPhp, level: 95, category: "Фреймворки" },
   { name: "Laravel", icon: SiLaravel, level: 85, category: "Фреймворки" },
-  { name: "Bitrix Framework", icon: SiPhp, level: 95, category: "Фреймворки" },
   { name: "MySQL", icon: SiMysql, level: 85, category: "Базы данных" },
   { name: "PostgreSQL", icon: SiPostgresql, level: 80, category: "Базы данных" },
-  { name: "Redis", icon: SiRedis, level: 75, category: "Базы данных" },
-  { name: "Docker", icon: SiDocker, level: 70, category: "DevOps" },
+  { name: "REST API", icon: SiPhp, level: 90, category: "Интеграции" },
+  { name: "Docker", icon: SiDocker, level: 75, category: "DevOps" },
   { name: "Git", icon: SiGit, level: 85, category: "Инструменты" },
-  { name: "Linux", icon: SiLinux, level: 80, category: "Инструменты" },
+  { name: "JavaScript", icon: SiPhp, level: 75, category: "Языки" },
 ];
 
 export default function SkillsSection() {
@@ -82,17 +82,17 @@ export default function SkillsSection() {
         <div className="mt-12 text-center">
           <Card className="inline-block p-6 backdrop-blur-md bg-card/50">
             <h3 className="font-display text-2xl font-bold mb-2 text-white">
-              Bitrix Framework
+              1С-Битрикс
             </h3>
             <p className="text-muted-foreground mb-4">
-              Сертифицированный разработчик с подтверждённой экспертизой
+              Квалифицированный специалист с большим опытом в крупных проектах
             </p>
             <div className="flex gap-2 justify-center flex-wrap">
               <Badge variant="default" className="text-sm" data-testid="badge-bitrix-cert-1">
-                Bitrix Developer
+                Разработчик Битрикс
               </Badge>
               <Badge variant="default" className="text-sm" data-testid="badge-bitrix-cert-2">
-                Advanced Module Development
+                1С, ЗАО (2025)
               </Badge>
             </div>
           </Card>
