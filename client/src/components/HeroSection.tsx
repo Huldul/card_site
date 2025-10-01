@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import profileImage from "@assets/123145151 — копия_1759353924508.jpg";
 import ProfileCard from "@/components/effects/ProfileCard";
+import RotatingText from "@/components/effects/RotatingText";
 
 export default function HeroSection() {
   return (
@@ -85,15 +86,27 @@ export default function HeroSection() {
               >
                 Кирилл Жилин
               </motion.h1>
-              <motion.h2 
-                className="text-2xl md:text-3xl font-semibold text-white" 
+              <motion.div
+                className="text-2xl md:text-3xl font-semibold text-white flex items-center gap-2 flex-wrap" 
                 data-testid="text-hero-title"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, delay: 0.3 }}
               >
-                PHP Backend Разработчик
-              </motion.h2>
+                <span>PHP Backend</span>
+                <RotatingText
+                  texts={['Разработчик', 'Developer', 'Engineer', 'Specialist']}
+                  mainClassName="px-3 py-1 bg-gradient-to-r from-primary/20 to-primary/10 text-primary border border-primary/30 rounded-lg inline-flex overflow-hidden"
+                  staggerFrom="last"
+                  initial={{ y: "100%" }}
+                  animate={{ y: 0 }}
+                  exit={{ y: "-120%" }}
+                  staggerDuration={0.02}
+                  splitLevelClassName="overflow-hidden"
+                  transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                  rotationInterval={3000}
+                />
+              </motion.div>
               <motion.p 
                 className="text-lg text-muted-foreground" 
                 data-testid="text-hero-subtitle"
@@ -116,7 +129,7 @@ export default function HeroSection() {
               >
               <div className="grid grid-cols-3 gap-4">
                 <div className="text-center">
-                  <div className="text-3xl font-bold text-primary" data-testid="text-stat-years">2+</div>
+                  <div className="text-3xl font-bold text-primary" data-testid="text-stat-years">3+</div>
                   <div className="text-sm text-muted-foreground">Года опыта</div>
                 </div>
                 <div className="text-center border-l border-r border-primary/20">
