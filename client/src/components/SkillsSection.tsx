@@ -3,7 +3,8 @@ import { Badge } from "@/components/ui/badge";
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef } from "react";
-import { SiPhp, SiLaravel, SiMysql, SiPostgresql, SiDocker, SiGit, SiLinux, SiRedis } from "react-icons/si";
+import { SiPhp, SiLaravel, SiMysql, SiPostgresql, SiDocker, SiGit, SiJavascript } from "react-icons/si";
+import { Network } from "lucide-react";
 
 interface Skill {
   name: string;
@@ -18,10 +19,10 @@ const skills: Skill[] = [
   { name: "Laravel", icon: SiLaravel, level: 85, category: "Фреймворки" },
   { name: "MySQL", icon: SiMysql, level: 85, category: "Базы данных" },
   { name: "PostgreSQL", icon: SiPostgresql, level: 80, category: "Базы данных" },
-  { name: "REST API", icon: SiPhp, level: 90, category: "Интеграции" },
+  { name: "REST API", icon: Network, level: 90, category: "Интеграции" },
   { name: "Docker", icon: SiDocker, level: 75, category: "DevOps" },
   { name: "Git", icon: SiGit, level: 85, category: "Инструменты" },
-  { name: "JavaScript", icon: SiPhp, level: 75, category: "Языки" },
+  { name: "JavaScript", icon: SiJavascript, level: 75, category: "Языки" },
 ];
 
 export default function SkillsSection() {
