@@ -1,7 +1,7 @@
 import { ArrowDown } from "lucide-react";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
-import profileImage from "@assets/123145151 — копия_1759353924508.jpg";
+import profileImage from "@assets/photo_5327870814764248816_c (1)_1759400446929.jpg";
 import ProfileCard from "@/components/effects/ProfileCard";
 import RotatingText from "@/components/effects/RotatingText";
 
