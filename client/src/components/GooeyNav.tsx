@@ -156,14 +156,25 @@ const GooeyNav = ({
   useEffect(() => {
     if (!navRef.current || !containerRef.current) return;
     
-    // Задержка для правильной инициализации после рендера
-    const timer = setTimeout(() => {
-      const activeLi = navRef.current?.querySelectorAll('li')[activeIndex];
-      if (activeLi) {
-        updateEffectPosition(activeLi);
-        textRef.current?.classList.add('active');
-      }
-    }, 100);
+    // Используем двойной requestAnimationFrame для гарантии правильного рендера
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        const activeLi = navRef.current?.querySelectorAll('li')[activeIndex];
+        if (activeLi) {
+          updateEffectPosition(activeLi);
+          if (textRef.current) {
+            textRef.current.classList.remove('active');
+            void textRef.current.offsetWidth; // Force reflow
+            textRef.current.classList.add('active');
+          }
+          if (filterRef.current) {
+            filterRef.current.classList.remove('active');
+            void filterRef.current.offsetWidth; // Force reflow
+            filterRef.current.classList.add('active');
+          }
+        }
+      });
+    });
 
     const resizeObserver = new ResizeObserver(() => {
       const currentActiveLi = navRef.current?.querySelectorAll('li')[activeIndex];
@@ -174,7 +185,6 @@ const GooeyNav = ({
 
     resizeObserver.observe(containerRef.current);
     return () => {
-      clearTimeout(timer);
       resizeObserver.disconnect();
     };
   }, [activeIndex]);
