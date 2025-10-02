@@ -186,16 +186,15 @@ export default function HeroSection() {
       </div>
 
       {/* Плавная капля-переход справа */}
-      <div className="absolute right-0 bottom-0 w-64 md:w-96 h-48 md:h-64 z-5 pointer-events-none">
+      <div className="absolute right-0 bottom-0 w-48 md:w-72 h-64 md:h-96 z-5 pointer-events-none overflow-visible">
         <svg 
           className="w-full h-full" 
-          viewBox="0 0 200 200" 
+          viewBox="0 0 100 150" 
           preserveAspectRatio="none"
         >
           <path 
-            d="M 200,0 Q 150,50 150,100 T 200,200 L 200,0 Z" 
+            d="M 100,0 C 80,20 70,40 70,60 C 70,80 60,100 50,120 C 40,140 30,150 0,150 L 0,0 Z" 
             fill="hsl(220, 45%, 8%)"
-            opacity="1"
           />
         </svg>
       </div>
