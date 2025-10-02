@@ -185,16 +185,17 @@ export default function HeroSection() {
         </motion.div>
       </div>
 
-      {/* Плавный волнистый переход */}
-      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
+      {/* Плавная капля-переход справа */}
+      <div className="absolute right-0 bottom-0 w-64 md:w-96 h-48 md:h-64 z-5 pointer-events-none">
         <svg 
-          className="relative block w-full h-[80px] md:h-[120px]" 
-          viewBox="0 0 1200 120" 
+          className="w-full h-full" 
+          viewBox="0 0 200 200" 
           preserveAspectRatio="none"
         >
           <path 
-            d="M0,0 C300,80 900,80 1200,0 L1200,120 L0,120 Z" 
+            d="M 200,0 Q 150,50 150,100 T 200,200 L 200,0 Z" 
             fill="hsl(220, 45%, 8%)"
+            opacity="1"
           />
         </svg>
       </div>
