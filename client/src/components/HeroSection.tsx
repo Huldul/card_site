@@ -171,7 +171,7 @@ export default function HeroSection() {
         </div>
 
         <motion.div 
-          className="absolute bottom-8 left-1/2 -translate-x-1/2"
+          className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20"
           animate={{
             y: [0, 10, 0],
           }}
@@ -183,6 +183,20 @@ export default function HeroSection() {
         >
           <ArrowDown className="w-6 h-6 text-primary" data-testid="icon-scroll-indicator" />
         </motion.div>
+      </div>
+
+      {/* Плавный волнистый переход */}
+      <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-10">
+        <svg 
+          className="relative block w-full h-[80px] md:h-[120px]" 
+          viewBox="0 0 1200 120" 
+          preserveAspectRatio="none"
+        >
+          <path 
+            d="M0,0 C300,80 900,80 1200,0 L1200,120 L0,120 Z" 
+            fill="hsl(220, 45%, 8%)"
+          />
+        </svg>
       </div>
     </section>
   );
